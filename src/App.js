@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import wordService from './utils/wordService';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+  state = {  }
+
+  getSecretWord = async () => {
+    let secretWord = await wordService.getSecretWord();
+    this.setState({secretWord: secretWord})
+  }
+
+  componentDidMount() {
+    this.getSecretWord();
+  }
+
+
+  render() { 
+    return ( 
+    <div>
+      <h1>React Word Game!</h1>
+      <p></p>
     </div>
-  );
+     );
+  }
 }
-
+ 
 export default App;
