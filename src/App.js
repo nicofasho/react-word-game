@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import wordService from './utils/wordService';
+import Counter from "./components/Counter";
+import GuessRow from "./components/GuessRow";
+import PriorGuesses from "./components/PriorGuesses";
+import LetterBoard from "./components/LetterBoard";
 
 class App extends Component {
   state = {  }
@@ -17,9 +21,13 @@ class App extends Component {
 
   render() { 
     return ( 
-    <div>
+    <div className="container">
       <h1>React Word Game!</h1>
-      <p></p>
+      <Counter />
+      <GuessRow />
+      <PriorGuesses />
+      <LetterBoard />
+      <p>{this.state.secretWord}</p>
     </div>
      );
   }
