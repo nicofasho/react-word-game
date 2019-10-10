@@ -10,7 +10,9 @@ class LetterBoard extends Component {
   render() {
     return (
       <div>
-        {(this.props.alphabet) ? this.generateLetters() : null}
+        {
+          (this.props.alphabet && !this.props.checkLoss() && !this.props.checkVictory()) ? this.generateLetters() : null
+        }
       </div>
     );
   }

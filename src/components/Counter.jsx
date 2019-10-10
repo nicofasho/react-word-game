@@ -4,7 +4,7 @@ class Counter extends Component {
   render() { 
     return ( 
     <div>
-      <h3>{(this.props.guessesLeft > 0) ? this.props.guessesLeft + ' guesses left' : null}</h3>
+      {(!this.props.checkLoss()) ? <h3>{this.props.guessesLeft + ' guesses left'}</h3> : null}
     </div>
      );
   }
