@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 
 class LetterBoard extends Component {
-  state = {  }
-  render() { 
-    return ( 
+  state = {}
+
+  generateLetters = () => {
+    return this.props.alphabet.map(char => <button onClick={() => this.props.checkGuess(char)} className="btn btn-outline-primary">{char}</button>);
+  }
+
+  render() {
+    return (
       <div>
-        <button className="btn btn-outline-primary">A</button>
-        <button className="btn btn-outline-primary">A</button>
-        <button className="btn btn-outline-primary">A</button>
-        <button className="btn btn-outline-primary">A</button>
-        <button className="btn btn-outline-primary">A</button>
-        <button className="btn btn-outline-primary">A</button>
+        {(this.props.alphabet) ? this.generateLetters() : null}
       </div>
-     );
+    );
   }
 }
- 
+
 export default LetterBoard;
