@@ -4,7 +4,7 @@ class Counter extends Component {
 
   lossMessage = () => {
     if (this.props.checkLoss() && this.props.guessesLeft > -1) {
-      return <h3>You ran out of guesses, try again?</h3>;
+      return 'You ran out of guesses, try again?';
     }
   }
 
@@ -17,9 +17,8 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        {(!this.props.checkLoss()) ? <h3>{this.props.guessesLeft + ' guesses left'}</h3> : null}
-        {this.lossMessage()}
-        {(this.props.checkVictory()) ? <h3>You guessed the word!</h3> : null}
+        <h3>{(!this.props.checkLoss()) ? ((this.props.checkVictory()) ? 'You guessed the word!' : `${this.props.guessesLeft} guesses left`) : this.lossMessage()}</h3>
+
       </div>
     );
   }

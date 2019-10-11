@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   checkVictory = () => {
-    if (this.state.guessrow) {
+    if (this.state.guessRow) {
       return !this.state.guessRow.includes('_');
     }
   }
@@ -89,7 +89,7 @@ class App extends Component {
       <div className="container">
         <h1>React Word Game!</h1>
         <Counter checkLoss={this.checkLoss} guessesLeft={this.state.guessesLeft} checkVictory={this.checkVictory} />
-        <GuessRow guess={this.state.guess} guessRow={this.state.guessRow} startGame={this.startGame} />
+        <GuessRow guess={this.state.guess} guessRow={this.state.guessRow} startGame={this.startGame} checkVictory={this.checkVictory} checkLoss={this.checkLoss} guessesLeft={this.state.guessesLeft} />
         <PriorGuesses missRow={this.state.missRow} />
         <LetterBoard alphabet={this.state.alphabet} checkGuess={this.checkGuess} checkLoss={this.checkLoss} checkVictory={this.checkVictory} />
       </div>
