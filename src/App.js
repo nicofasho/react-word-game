@@ -7,7 +7,7 @@ import PriorGuesses from "./components/PriorGuesses";
 import LetterBoard from "./components/LetterBoard";
 
 class App extends Component {
-  state = { guessesLeft: 0 }
+  state = { guessesLeft: -1 }
 
   getSecretWord = async () => {
     let secretWord = await wordService.getSecretWord();
@@ -33,7 +33,9 @@ class App extends Component {
   }
 
   checkVictory = () => {
-    return (!this.state.guessRow.includes('_'));
+    if (this.state.guessrow) {
+      return !this.state.guessRow.includes('_');
+    }
   }
 
   checkLoss = () => {
@@ -86,7 +88,7 @@ class App extends Component {
     return (
       <div className="container">
         <h1>React Word Game!</h1>
-        <Counter checkLoss={this.checkLoss} guessesLeft={this.state.guessesLeft} />
+        <Counter checkLoss={this.checkLoss} guessesLeft={this.state.guessesLeft} checkVictory={this.checkVictory} />
         <GuessRow guess={this.state.guess} guessRow={this.state.guessRow} startGame={this.startGame} />
         <PriorGuesses missRow={this.state.missRow} />
         <LetterBoard alphabet={this.state.alphabet} checkGuess={this.checkGuess} checkLoss={this.checkLoss} checkVictory={this.checkVictory} />
