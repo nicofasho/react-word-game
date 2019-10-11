@@ -5,3 +5,17 @@
   align-items: center;
   height: 100vh;
 }
+
+.guess-text {
+  font-size: 7vh;
+  letter-spacing: 1vw;
+}
+
+.letterboard-text {
+  font-size: 5vh;
+}
+
+.miss-row-text {
+  text-decoration: line-through;
+  letter-spacing: 1vw;
+}

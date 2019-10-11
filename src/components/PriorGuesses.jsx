@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class PriorGuesses extends Component {
-  state = {  }
-  render() { 
-    return ( 
+  state = {};
+  render() {
+    return (
       <div>
-        {(this.props.missRow) ? this.props.missRow : null}
+        <p className="miss-row-text">
+          {this.props.missRow ? this.props.missRow : null}
+        </p>
       </div>
-     );
+    );
   }
 }
- 
+
 export default PriorGuesses;
