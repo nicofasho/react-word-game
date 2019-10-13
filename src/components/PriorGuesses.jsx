@@ -5,9 +5,7 @@ class PriorGuesses extends Component {
   render() {
     return (
       <div>
-        <p className="miss-row-text">
-          {this.props.missRow ? this.props.missRow : null}
-        </p>
+          {this.props.missRow ? <p className="miss-row-text">Misses: {this.props.missRow}</p> : null}
       </div>
     );
   }

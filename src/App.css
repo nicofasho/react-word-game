@@ -16,6 +16,5 @@
 }
 
 .miss-row-text {
-  text-decoration: line-through;
-  letter-spacing: 1vw;
+  font-size: 3vh;
 }

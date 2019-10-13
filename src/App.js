@@ -5,12 +5,13 @@ import Counter from "./components/Counter";
 import GuessRow from "./components/GuessRow";
 import PriorGuesses from "./components/PriorGuesses";
 import LetterBoard from "./components/LetterBoard";
+import Definition from "./components/Definition";
 
 class App extends Component {
   state = { guessesLeft: -2 };
 
-  getSecretWord = async () => {
-    let secretWord = await wordService.getSecretWord();
+  getSecretWord = async difficulty => {
+    let secretWord = await wordService.getSecretWord(difficulty);
     this.setState({ secretWord: secretWord.toUpperCase() });
   };
 
@@ -41,8 +42,9 @@ class App extends Component {
     return !(this.state.guessesLeft > 0);
   };
 
-  startGame = async () => {
-    await this.getSecretWord();
+  startGame = async difficulty => {
+    await this.getSecretWord(difficulty);
+    this.getDefinition();
     this.setInitialGuessArray();
     this.setInitialLetters();
   };
@@ -88,6 +90,16 @@ class App extends Component {
     });
   };
 
+  getDefinition = async () => {
+    if (this.state.secretWord) {
+      let res = await wordService.getWordDefinition(this.state.secretWord);
+      let pos = res[0].fl;
+      let definition = res[0].shortdef[0];
+      let str = `${this.state.secretWord} (${pos}) - ${definition}.`;
+      this.setState({ definition: str });
+    }
+  };
+
   render() {
     return (
       <div className="container">
@@ -112,6 +124,11 @@ class App extends Component {
           checkGuess={this.checkGuess}
           checkLoss={this.checkLoss}
           checkVictory={this.checkVictory}
+        />
+        <Definition
+          definition={this.state.definition}
+          checkVictory={this.checkVictory}
+          checkLoss={this.checkLoss}
         />
       </div>
     );
