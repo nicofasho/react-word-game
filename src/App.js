@@ -92,11 +92,29 @@ class App extends Component {
 
   getDefinition = async () => {
     if (this.state.secretWord) {
-      let res = await wordService.getWordDefinition(this.state.secretWord);
-      let pos = res[0].fl;
-      let definition = res[0].shortdef[0];
-      let str = `${this.state.secretWord} (${pos}) - ${definition}.`;
-      this.setState({ definition: str });
+      try {
+        let res = await wordService.getWordDefinition(this.state.secretWord);
+        if (!!res[0].shortdef[0]) {
+          let pos = res[0].fl;
+          let definition = res[0].shortdef[0];
+          let str = `${this.state.secretWord} (${pos}) - ${definition}.`;
+          this.setState({ definition: str });
+        }
+      } catch (err) {
+        try {
+          let res = await wordService.getWordDefinition(this.state.secretWord);
+          if (!!res[0].shortdef[0]) {
+            let pos = res[0].fl;
+            let definition = res[0].shortdef[0];
+            let str = `${this.state.secretWord} (${pos}) - ${definition}.`;
+            this.setState({ definition: str });
+          }
+        } catch (err) {
+          this.setState({
+            definition: `Error: could not find definition for ${this.state.secretWord}`
+          });
+        }
+      }
     }
   };
 
