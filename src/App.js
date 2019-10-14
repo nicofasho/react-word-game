@@ -150,6 +150,9 @@ class App extends Component {
           guessesLeft={this.state.guessesLeft}
           secretWord={this.state.secretWord}
         />
+        <footer className="fixed-bottom py-3 text-center bg-light">
+          Coded by: Christian Watson 💻
+        </footer>
       </div>
     );
   }
