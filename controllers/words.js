@@ -12,7 +12,7 @@ function generateRandomWordSeed() {
 
 function getSecretWord(req, res) {
   let url = `${secretBaseURL}?difficulty=${
-    req.difficulty
+    req.params.difficulty
   }&start=${generateRandomWordSeed()}&count=1`;
 
   request({ url: url }, function(err, response, body) {
