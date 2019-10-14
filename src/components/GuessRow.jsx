@@ -5,7 +5,7 @@ class GuessRow extends Component {
 
   showButtons = () => {
     return (
-      <div className="mx-auto text-center">
+      <div className="mx-auto text-center mb-5">
         <button
           className="btn btn-success"
           onClick={() => this.props.startGame(3)}
@@ -13,7 +13,7 @@ class GuessRow extends Component {
           Easy
         </button>
         <button
-          className="btn btn-warning"
+          className="btn btn-warning mx-3"
           onClick={() => this.props.startGame(5)}
         >
           Medium
@@ -36,13 +36,11 @@ class GuessRow extends Component {
         {this.props.checkLoss() && this.props.guessesLeft > -1 ? (
           <>
             {this.showButtons()}
-            <p className="text-center">
-              The word you were guessing was {this.props.secretWord}
-            </p>
+            
           </>
         ) : null}
         {this.props.guessRow ? (
-          <p className="text-center guess-text">{this.props.guessRow}</p>
+          <p className="text-center guess-text mb-3">{this.props.guessRow}</p>
         ) : null}
       </div>
     );

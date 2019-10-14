@@ -111,7 +111,7 @@ class App extends Component {
           }
         } catch (err) {
           this.setState({
-            definition: `Error: could not find definition for ${this.state.secretWord}`
+            definition: `Sorry, we could not find a definition for ${this.state.secretWord}`
           });
         }
       }
@@ -121,7 +121,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>React Word Game!</h1>
+        <h1 className="mb-3">React Word Game!</h1>
         <Counter
           checkLoss={this.checkLoss}
           guessesLeft={this.state.guessesLeft}
@@ -147,6 +147,8 @@ class App extends Component {
           definition={this.state.definition}
           checkVictory={this.checkVictory}
           checkLoss={this.checkLoss}
+          guessesLeft={this.state.guessesLeft}
+          secretWord={this.state.secretWord}
         />
       </div>
     );
