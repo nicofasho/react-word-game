@@ -151,7 +151,7 @@ class App extends Component {
           secretWord={this.state.secretWord}
         />
         <footer className="fixed-bottom py-3 text-center bg-light">
-          Coded by: Christian Watson 💻
+          Coded by: Christian Watson <span role="img" aria-label="computer">💻</span>
         </footer>
       </div>
     );
