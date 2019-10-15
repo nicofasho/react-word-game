@@ -9,9 +9,12 @@ class Definition extends Component {
         {this.props.checkVictory() ||
         (this.props.checkLoss() && this.props.guessesLeft > -1) ? (
           <>
-            <p className="text-center mt-5">
-              The word you were guessing was {this.props.secretWord}
-            </p>
+            {this.props.checkLoss() ? (
+              <p className="text-center mt-5">
+                The word you were guessing was {this.props.secretWord}
+              </p>
+            ) : null}
+
             <p className="definition-text">{this.props.definition}</p>
           </>
         ) : null}
