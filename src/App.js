@@ -64,6 +64,8 @@ class App extends Component {
     });
   };
 
+
+
   checkGuess = g => {
     let guesses = this.state.guess;
     let newAlphabet = this.state.alphabet.filter(c => {
@@ -150,7 +152,7 @@ class App extends Component {
           guessesLeft={this.state.guessesLeft}
           secretWord={this.state.secretWord}
         />
-        <footer className="fixed-bottom py-3 text-center bg-light">
+        <footer className="fixed-bottom py-3 text-center bg-white">
           Coded by: Christian Watson <span role="img" aria-label="computer">💻</span>
         </footer>
       </div>
